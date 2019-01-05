@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="#{layoutMB.layout}">
+
+    <ui:define name="head-end">
+        <ui:param name="renderBreadCrumb" value="true"/>
+    </ui:define>
+
+    <ui:define name="title">
+
+    </ui:define>
+    <ui:define name="body">
+        <div class="box box-primary">
+            <div class="box-header">
+                <p:panel id="spanel"   style="background: transparent; border: none; width: inherit">
+                    <h:form style="border: none">
+                        <p:growl id="growl" sticky="true" showDetail="true"/>
+                        <p:wizard flowListener="#{eutilities.onFlowProcess}"  widgetVar="wiz" style="width: fit-content; border-width: 0;">
+                            <p:tab id="personal" title="About">
+                                <p:panel header="About" style="border: 0">
+                                    <p:messages />
+                                    <h:panelGrid columns="1">
+                                        Use our convenient mobile application to:
+                                        <ul>
+                                            <li>
+                                                <span>View your billing history</span>
+                                            </li>
+                                            <li>
+                                                <span>Pay your utility bills (URA. NWSC, UMEME, NSSF)</span>
+                                            </li>
+                                            <li>
+                                                <span>Pay multiple accounts</span>
+                                            </li>
+                                            <li>
+                                                <span>View your bill use chart</span>
+                                            </li>
+                                            <li>
+                                                <span>Set up a password</span>
+                                            </li>
+                                            <li>
+                                                <span>Change your mailing address</span>
+                                            </li>
+                                            <li>
+                                                <span>Set up E-Statement</span>
+                                            </li>
+                                            <li>
+                                                <span>PAY BY PHONE – 256******</span>
+                                            </li>
+                                            <li>
+                                                <span>Monday – Friday, 8:00 AM to 5:00 PM</span>
+                                            </li>
+                                        </ul>
+                                    </h:panelGrid>
+                                    <h:outputText value="Skip to pay: " />
+                                    <h:selectBooleanCheckbox value="#{eutilities.skip}" />
+                                </p:panel>
+                            </p:tab>
+                            <p:tab id="address" title="Utilities">
+                                <p:panel header="Utilities Available" style="border: 0">
+                                    <p:messages />
+                                    <h:panelGrid columns="1" styleClass="ui-fluid card">
+                                        <p:link onclick="PF('wiz').loadStep(PF('wiz').cfg.steps[2], true)">
+                                            <p:panelGrid columns="1">
+                                                <p:outputLabel value="URA"/>
+                                                <img src="images/ura_logo.png" width="80" height="80"   alt="URA"/>
+                                                <h:selectBooleanCheckbox value="URA" />
+                                            </p:panelGrid>
+                                        </p:link>
+                                        <p:spacer height="20px"/>
+                                        <p:link   onclick="PF('wiz').loadStep(PF('wiz').cfg.steps[2], true)">
+                                            <p:panelGrid columns="1">
+                                                <p:outputLabel value="UMEME"/>
+                                                <img src="images/umeme_logo.png" width="80" height="80" alt="UMEME"/>
+                                                <h:selectBooleanCheckbox value="UMEME" />
+                                            </p:panelGrid>
+                                        </p:link>
+                                        <p:spacer height="20px"/>
+                                        <p:link   onclick="PF('wiz').loadStep(PF('wiz').cfg.steps[2], true)">
+                                            <p:panelGrid columns="1">
+                                                <p:outputLabel value="NSSF"/>
+                                                <img src="images/nssf_logo.png" width="80" height="80" alt="NSSF"/>
+                                                <h:selectBooleanCheckbox value="NSSF" />
+                                            </p:panelGrid>
+                                        </p:link>
+                                        <p:spacer height="20px"/>
+                                        <p:link   onclick="PF('wiz').loadStep(PF('wiz').cfg.steps[2], true)">
+                                            <p:panelGrid columns="1">
+                                                <p:outputLabel value="NWSC"/>
+                                                <img src="images/nwsc_logo.jpg" width="80" height="80" alt="NWSC"/>
+                                                <h:selectBooleanCheckbox value="NWSC" />
+                                            </p:panelGrid>
+                                        </p:link>
+                                        <h:outputText value="Skip to pay :"/>
+                                        <h:selectBooleanCheckbox value="#{eutilities.skip}" />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+                            <p:tab id="contact" title="Explain">
+                                <p:panel header="Explanation of the bill" style="border: 0">
+                                    <p:messages />
+                                    <h:panelGrid columns="1">
+                                        <h:outputText value="Enter the PRN/Payment Reference" style="color: green" />
+                                        <p:inputText value="#{eutilities.user.email}" required="true" label="Email"/>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+                            <p:tab id="confirm" title="Details">
+                                <p:panel header="View PRN details" style="border: 0">
+                                    <h:panelGrid id="confirmation" columns="2" columnClasses="grid,grid">
+                                        <h:outputText value="PRN: "  styleClass="outputLabel" style="color: green"/>
+                                        <h:outputText value="1234567890" styleClass="outputLabel" style="color: red"/>
+                                        <h:outputText value="CUSTOMER REFERENCE: "  styleClass="outputLabel" style="color: green"/>
+                                        <h:outputText value="XX374183712MM" styleClass="outputLabel" style="color: red"/>
+                                        <h:outputText value="CUSTOMER NAME: "  styleClass="outputLabel" style="color: green"/>
+                                        <h:outputText value="CHRISTINE KABAJWISA" styleClass="outputLabel" style="color: red"/>
+                                        <h:outputText value="PHONE: " styleClass="outputLabel" style="color: green"/>
+                                        <h:outputText value="0728140544" styleClass="outputLabel" style="color: red"/>
+                                        <h:outputText value="PR DATE: "  styleClass="outputLabel" style="color: green"/>
+                                        <h:outputText value="29/09/2018" styleClass="outputLabel" style="color: red"/>
+                                        <h:outputText value="CREDIT ACCOUNT: " styleClass="outputLabel" style="color: green"/>
+                                        <h:outputText value="0470196953194" styleClass="outputLabel" style="color: red"/>
+                                        <h:outputText value="DEBIT ACCOUNT: " styleClass="outputLabel" style="color: green"/>
+                                        <h:outputText value="0470196953194" styleClass="outputLabel" style="color: red"/>
+                                        <h:outputText value="CREDIT AMOUNT " styleClass="outputLabel" style="color: green"/>
+                                        <h:outputText value="UGX 300,000" styleClass="outputLabel" style="color: red"/>
+                                        <h:outputText value="DEBIT AMOUNT: " styleClass="outputLabel" style="color: green"/>
+                                        <h:outputText value="UGX 200,000" styleClass="outputLabel" style="color: red"/>
+                                        <h:outputText />
+                                        <h:outputText />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+                            <p:tab id="checkout" title="Pay">
+                                <p:panel header="Select preffered payment option" style="border: 0">
+                                    <p:messages />
+                                    <h:panelGrid columns="1" styleClass="ui-fluid card">
+                                        <p:link>
+                                            <p:panelGrid columns="1">
+                                                <p:outputLabel value="MASTERCARD"/>
+                                                <img src="images/mastercard.png" width="80" height="80"   alt="MASTERCARD"/>
+                                                <h:selectBooleanCheckbox value="MASTERCARD" />
+                                            </p:panelGrid>
+                                        </p:link>
+                                        <p:spacer height="20px"/>
+                                        <p:link>
+                                            <p:panelGrid columns="1">
+                                                <p:outputLabel value="VISA"/>
+                                                <img src="images/visa.png" width="80" height="80" alt="VISA"/>
+                                                <h:selectBooleanCheckbox value="VISA" />
+                                            </p:panelGrid>
+                                        </p:link>
+                                        <p:spacer height="20px"/>
+                                        <p:link>
+                                            <p:panelGrid columns="1">
+                                                <p:outputLabel value="UBA"/>
+                                                <img src="images/uba.png" width="80" height="80" alt="UBA"/>
+                                                <h:selectBooleanCheckbox value="UBA" />
+                                            </p:panelGrid>
+                                        </p:link>
+                                        <p:spacer height="20px"/>
+                                        <p:link>
+                                            <p:panelGrid columns="1">
+                                                <p:outputLabel value="EUROPAY"/>
+                                                <img src="images/europay.png" width="80" height="80" alt="EUROPAY"/>
+                                                <h:selectBooleanCheckbox value="EUROPAY" />
+                                            </p:panelGrid>
+                                        </p:link>
+                                        <p:commandButton value="Proceed to pay" actionListener="#{eutilities.pay}" update="growl" process="@this"/>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:tab>
+                        </p:wizard>
+
+                    </h:form>
+                </p:panel>
+            </div>
+        </div>
+        <script type="text/javascript">
+            /*if ('serviceWorker' in navigator) {
+             navigator.serviceWorker.register('sw.js');
+             }*/
+
+
+            if ('serviceWorker' in navigator) {
+                /*  navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                 for (let registration of registrations) {
+                 registration.unregister()
+                 }
+                 });*/
+
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker.register('sw.js').then(function (registration) {
+                        // Registration was successful
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, function (err) {
+                        // registration failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                });
+            }
+        </script>
+    </ui:define>
+
+
+</ui:composition>

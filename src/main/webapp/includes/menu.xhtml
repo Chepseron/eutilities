@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:p="http://primefaces.org/ui" xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ul class="sidebar-menu">
+        <li>
+            <li>
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="images/Amon Sabul.jpg" class="img-circle" alt="User Image"/>
+                    </div>
+                    <div class="pull-left info">
+                        <p>#{sch.user.email}</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- search form (Optional) -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                        <span class="input-group-btn">
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </li>
+        </li>
+        <li>
+            <p:link href="/utilities.xhtml">
+                <i class="fa  fa-money"></i>
+                <span>Utilities</span>
+            </p:link>
+        </li>
+        <li>
+            <p:link href="/usersgroups.xhtml">
+                <i class="fa  fa-group"></i>
+                <span>User Groups</span>
+            </p:link>
+        </li>
+
+        <li>
+            <p:link href="/users.xhtml">
+                <i class="fa fa-users"></i>
+                <span>Users</span>
+            </p:link>
+        </li>
+        <li>
+            <p:link href="/status.xhtml">
+                <i class="fa  fa-hourglass-2"></i>
+                <span>Status</span>
+            </p:link>
+        </li>
+
+    </ul>
+
+    <script type="text/javascript">
+        $('.list > li a').click(function () {
+            $(this).parent().find('ul').toggle();
+        });
+    </script>
+</ui:composition>
